@@ -22,7 +22,7 @@ USER       nobody
 EXPOSE     9090
 VOLUME     [ "/prometheus" ]
 WORKDIR    /prometheus
-ENTRYPOINT [ "/bin/prometheus" ]
+ENTRYPOINT [ "env GODEBUG=x509ignoreCN=0 /bin/prometheus" ]
 CMD        [ "--config.file=/etc/prometheus/prometheus.yml", \
              "--storage.tsdb.path=/prometheus", \
              "--web.console.libraries=/usr/share/prometheus/console_libraries", \
